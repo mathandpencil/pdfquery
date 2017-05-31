@@ -132,7 +132,7 @@ def smart_unicode_decode(encoded_string):
     detected_encoding = chardet.detect(encoded_string)
     decoded_string = six.text_type(
         encoded_string,
-        encoding=detected_encoding['encoding'] or 'utf8',
+        encoding=detected_encoding['encoding'] if (detected_encoding and detected_encoding['encoding']) else 'utf8',
         errors='replace'
     )
 
